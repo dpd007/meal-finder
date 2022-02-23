@@ -1,0 +1,31 @@
+import React, { useState, useEffect } from "react";
+const SearchMeal = (props) => {
+  const [inputText, setInputText] = useState("");
+  const inputChangeHandler = (e) => {
+    setInputText(e.target.value);
+  };
+  const searchHandler = () => {
+    props.getInput(inputText);
+  };
+
+  return (
+    <div className="search__container">
+      <input
+        type="text"
+        name="searchText"
+        placeholder="Search for meals or keywords"
+        id="searchText"
+        value={inputText}
+        onChange={inputChangeHandler}
+      />
+      <button id="submitBtn" onClick={searchHandler}>
+        <i className="fa fa-search" aria-hidden="true"></i>
+      </button>
+      <button id="shuffleBtn">
+        <i className="fa fa-random" aria-hidden="true"></i>
+      </button>
+    </div>
+  );
+};
+
+export default SearchMeal;
