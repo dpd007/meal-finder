@@ -7,7 +7,9 @@ const SearchMeal = (props) => {
   const searchHandler = () => {
     props.getInput(inputText);
   };
-
+  const shuffller = () => {
+    props.onSuffle();
+  };
   return (
     <div className="search__container">
       <input
@@ -21,7 +23,7 @@ const SearchMeal = (props) => {
       <button id="submitBtn" onClick={searchHandler}>
         <i className="fa fa-search" aria-hidden="true"></i>
       </button>
-      <button id="shuffleBtn">
+      <button id="shuffleBtn" onClick={shuffller}>
         <i className="fa fa-random" aria-hidden="true"></i>
       </button>
     </div>
