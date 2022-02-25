@@ -2,27 +2,30 @@ import SearchMeal from "./components/SearchMeal";
 import React, { useState, useEffect } from "react";
 import MealList from "./components/MealList";
 import SingleMeal from "./components/SingleMeal";
+import SuffledMeal from "./components/SuffledMeal";
 function App() {
   const axios = require("axios");
   const URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
   const [meals, setMeals] = useState(null);
   const [filteredMeals, setFilteredMeals] = useState(null);
-  const [shuffledMeal, setShuffledMeal] = useState(null);
+  // const [shuffledMeal, setShuffledMeal] = useState(null);
   const [isShuffleClicked, setShuffleClick] = useState(false);
   const [error, setError] = useState(false);
   const [text, setText] = useState("");
   const mealAddHandler = (text) => {
     setText(text);
+    setShuffleClick(false);
   };
   const filterMealHandler = (id) => {
     setFilteredMeals(meals.filter((meal) => meal.idMeal === id));
   };
   const shuffleHandler = () => {
     setShuffleClick(true);
-    // shuffleMealHandler();
     fetchData(URL, text);
-    // const test = meals[Math.floor(Math.random * meals.length)];
-    // console.log(test);
+  };
+  const shuffle = () => {
+    const randomIndex = Math.floor(Math.random() * meals.length);
+    const meal = meals[randomIndex];
   };
   useEffect(() => {
     if (text !== "") {
@@ -54,19 +57,18 @@ function App() {
             justifyContent: "center",
             marginTop: "25px",
           }}
-        >
-          <h2>Search results for "typed name"</h2>
-        </div>
-        <div id="meals" className="meals d-flex">
-          {isShuffleClicked === true || meals === null ? (
-            <SingleMeal meals={meals} isShuffle={isShuffleClicked} />
-          ) : (
-            <MealList data={meals} onShow={filterMealHandler} />
+        ></div>
+        <div id="meals" className="meals">
+          {isShuffleClicked === true ? null : (
+            <h2 style={{ textAlign: "center" }}>Search results for {text}</h2>
           )}
-
-          {/* {isShuffleClicked ? null : (
-            <MealList data={meals} onShow={filterMealHandler} />
-          )} */}
+          <div className="d-flex">
+            {isShuffleClicked === false && meals ? (
+              <MealList data={meals} onShow={filterMealHandler} />
+            ) : isShuffleClicked === true && meals ? (
+              <SuffledMeal meals={meals} />
+            ) : null}
+          </div>
         </div>
         {filteredMeals && <SingleMeal meals={filteredMeals} />}
       </div>
