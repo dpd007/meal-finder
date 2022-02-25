@@ -1,7 +1,6 @@
 const SuffledMeal = (props) => {
   const id = props.meals[Math.floor(Math.random() * props.meals.length)].idMeal;
   const meal = props.meals.filter((meal) => meal.idMeal === id);
-  console.log(meal);
   const ingredients = [];
   const measures = [];
   const getIngredients = (meal) => {
@@ -20,7 +19,6 @@ const SuffledMeal = (props) => {
       </li>
     ));
   };
-  // return <h3>sda</h3>;
   return (
     <div id="single__meal">
       {meal.map((meal) => (
