@@ -8,7 +8,6 @@ function App() {
   const URL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
   const [meals, setMeals] = useState(null);
   const [filteredMeals, setFilteredMeals] = useState(null);
-  // const [shuffledMeal, setShuffledMeal] = useState(null);
   const [isShuffleClicked, setShuffleClick] = useState(false);
   const [error, setError] = useState(false);
   const [text, setText] = useState("");

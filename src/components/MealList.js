@@ -1,7 +1,5 @@
 const MealList = (props) => {
-  // console.log(props.data);
   const showHandler = (id) => {
-    // console.log(id);
     props.onShow(id);
   };
   return (
