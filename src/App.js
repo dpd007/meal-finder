@@ -69,7 +69,10 @@ function App() {
             ) : null}
           </div>
         </div>
-        {filteredMeals && <SingleMeal meals={filteredMeals} />}
+        {/* {filteredMeals && <SingleMeal meals={filteredMeals} />} */}
+        {isShuffleClicked === false && filteredMeals ? (
+          <SingleMeal meals={filteredMeals} />
+        ) : null}
       </div>
     </div>
   );
