@@ -12,6 +12,9 @@ function App() {
   const [error, setError] = useState(false);
   const [text, setText] = useState("");
   const mealAddHandler = (text) => {
+    if (text === "") {
+      alert("Please enter valid meal's name.");
+    }
     setText(text);
     setShuffleClick(false);
   };
@@ -69,7 +72,6 @@ function App() {
             ) : null}
           </div>
         </div>
-        {/* {filteredMeals && <SingleMeal meals={filteredMeals} />} */}
         {isShuffleClicked === false && filteredMeals ? (
           <SingleMeal meals={filteredMeals} />
         ) : null}
