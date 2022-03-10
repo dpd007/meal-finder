@@ -6,6 +6,7 @@ const SearchMeal = (props) => {
   };
   const searchHandler = () => {
     props.getInput(inputText);
+    setInputText("");
   };
   const shuffller = () => {
     props.onSuffle();
